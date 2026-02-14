@@ -1,3 +1,4 @@
+#FIRST PASS ROBOT VERSION USE WITH GREAT CARE AND CHECK WITH ORIGINAL?? untested yet
 # Win11 Debloat Split - Individual Debloating Scripts
 
 Welcome! This repository contains **individual scripts** that let you customize Windows 11 exactly how you want it. Each script handles one specific thing, so you only change what you need.
