@@ -156,7 +156,7 @@ if ($success -and -not $Silent) {
         Write-Host "Restarting computer in 10 seconds..." -ForegroundColor Yellow
         Write-Host "Close any open files and save your work!" -ForegroundColor Red
         Start-Sleep -Seconds 10
-        Restart-Computer -Force
+        Restart-Computer
     }
 }
 

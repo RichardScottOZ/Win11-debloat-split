@@ -49,7 +49,7 @@ Unlike all-in-one debloating tools, these individual scripts give you **precise 
 
 4. **Allow script execution** (one-time setup)
    ```powershell
-   Set-ExecutionPolicy -Scope Process -Force Unrestricted
+   Set-ExecutionPolicy -Scope Process -Force Bypass
    ```
 
 5. **Run the script you want**
@@ -156,6 +156,43 @@ Unlike all-in-one debloating tools, these individual scripts give you **precise 
 - ✅ **Start with one script at a time** to see the effects
 - ✅ **Most changes can be undone** using the registry files in `Regfiles/Undo/`
 
+### ⚠️ OS Safety Risk Levels
+
+Some scripts carry higher risk than others. Here's a breakdown:
+
+#### 🟢 Low Risk (cosmetic/preference changes, easily reversible)
+| Script / Reg File | What It Does |
+|---|---|
+| `Align-Taskbar-Left.ps1` | Moves taskbar alignment — purely cosmetic |
+| `Enable-DarkMode.ps1` | Switches color theme — purely cosmetic |
+| `Show-FileExtensions.ps1` | Shows file extensions — actually improves security |
+| `Show-HiddenFiles.ps1` | Makes hidden files visible — no system impact |
+| `Disable-BingSearch.ps1` | Removes web search from Start menu — no system impact |
+| `Disable-Widgets.ps1` | Removes widgets button — no system impact |
+| `Disable-WindowsSuggestions.ps1` | Disables ads/tips — no system impact |
+| `Disable-Animations.ps1` | Disables visual effects — may make UI feel different |
+
+#### 🟡 Medium Risk (changes system behavior, may affect features you rely on)
+| Script / Reg File | What It Does | Potential Impact |
+|---|---|---|
+| `Disable-Telemetry.ps1` | Disables diagnostic data collection | Some Windows features that rely on telemetry data may stop working properly |
+| `Disable-Copilot.ps1` | Removes Copilot AI assistant | Copilot features become unavailable |
+| `Disable-WindowsRecall.ps1` | Disables Recall AI screenshots | Recall search unavailable |
+| `Disable-FastStartup.ps1` | Disables hybrid shutdown | Slightly slower boot time |
+| `Prevent-AutoReboot.ps1` | Prevents automatic restarts | Security updates may be delayed if you forget to restart |
+| `Remove-BloatwareApps.ps1` | Removes pre-installed apps | Some apps cannot be easily reinstalled |
+| `Disable_Delivery_Optimization.reg` | Disables update sharing | Updates download only from Microsoft servers |
+
+#### 🔴 Higher Risk (modifies system internals, harder to reverse)
+| Script / Reg File | What It Does | Potential Impact |
+|---|---|---|
+| `Disable_Game_Bar_Integration.reg` | Redirects game bar protocol handlers | **May break games** that rely on Game Bar or Xbox overlay |
+| `Disable_Bitlocker_Auto_Encryption.reg` | Prevents automatic BitLocker encryption | **Reduces disk encryption protection** on supported hardware |
+| `Disable_Give_access_to_context_menu.reg` | Deletes context menu registry keys | **Removes sharing context menu entries entirely** (uses `[-KEY]` syntax to delete keys) |
+| `Disable_Include_in_library_from_context_menu.reg` | Deletes library context menu keys | **Removes library context menu entries entirely** (uses `[-KEY]` syntax to delete keys) |
+| `Disable_Share_from_context_menu.reg` | Deletes sharing handler registry key | **Removes modern share from context menu entirely** (uses `[-KEY]` syntax to delete keys) |
+| `Disable_Settings_Home.reg` | Hides Settings home page via policy | **May confuse users** who expect the Settings home page |
+
 ### Will This Break Windows?
 **No!** These scripts only change settings and remove optional apps. They don't:
 - ❌ Delete system files
@@ -174,7 +211,7 @@ Unlike all-in-one debloating tools, these individual scripts give you **precise 
 ### "Scripts are disabled on this system"
 Run this in PowerShell (as Administrator):
 ```powershell
-Set-ExecutionPolicy -Scope Process -Force Unrestricted
+Set-ExecutionPolicy -Scope Process -Force Bypass
 ```
 
 ### "Access Denied" or "Permission Denied"

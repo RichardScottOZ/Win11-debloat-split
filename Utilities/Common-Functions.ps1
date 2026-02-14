@@ -220,14 +220,18 @@ function Wait-ForKeyPress {
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
 
-# Export functions for use in other scripts
-Export-ModuleMember -Function @(
-    'Import-RegistryFile',
-    'Test-IsAdministrator',
-    'Require-Administrator',
-    'New-SystemRestorePoint',
-    'Restart-Explorer',
-    'Get-UserConfirmation',
-    'Write-Separator',
-    'Wait-ForKeyPress'
-)
+# Note: When dot-sourced (. .\Common-Functions.ps1), all functions are
+# automatically available in the calling scope. Export-ModuleMember is
+# only needed if this file is used as a module (.psm1).
+if ($MyInvocation.Line -notmatch '^\.\s') {
+    Export-ModuleMember -Function @(
+        'Import-RegistryFile',
+        'Test-IsAdministrator',
+        'Require-Administrator',
+        'New-SystemRestorePoint',
+        'Restart-Explorer',
+        'Get-UserConfirmation',
+        'Write-Separator',
+        'Wait-ForKeyPress'
+    )
+}

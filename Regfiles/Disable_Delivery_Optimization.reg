@@ -1,5 +1,7 @@
 Windows Registry Editor Version 5.00
 
 ; Disable sharing downloaded updates with other PCs (Delivery Optimization)
-[HKEY_USERS\S-1-5-20\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings]
-"DownloadMode"=dword:00000000
+; Use the policy key under HKLM instead of HKEY_USERS\S-1-5-20 (NetworkService)
+; which may not exist or be accessible on all systems
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
+"DODownloadMode"=dword:00000000

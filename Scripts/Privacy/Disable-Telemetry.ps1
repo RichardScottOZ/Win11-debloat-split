@@ -57,7 +57,7 @@ param(
 )
 
 # Import common functions
-$CommonFunctionsPath = Join-Path $PSScriptRoot "..\Utilities\Common-Functions.ps1"
+$CommonFunctionsPath = Join-Path $PSScriptRoot "..\..\Utilities\Common-Functions.ps1"
 if (Test-Path $CommonFunctionsPath) {
     . $CommonFunctionsPath
 } else {
@@ -106,7 +106,7 @@ if ($CreateRestorePoint) {
 }
 
 # Path to the telemetry registry file
-$regFilePath = Join-Path $PSScriptRoot "..\Regfiles\Disable_Telemetry.reg"
+$regFilePath = Join-Path $PSScriptRoot "..\..\Regfiles\Disable_Telemetry.reg"
 
 # Apply registry changes
 Write-Host ""
@@ -147,7 +147,7 @@ if (-not $Silent) {
         Write-Host "Restarting computer in 10 seconds..." -ForegroundColor Yellow
         Write-Host "Close any open files and save your work!" -ForegroundColor Red
         Start-Sleep -Seconds 10
-        Restart-Computer -Force
+        Restart-Computer
     }
 }
 

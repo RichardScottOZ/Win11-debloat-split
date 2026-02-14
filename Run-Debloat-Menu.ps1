@@ -36,7 +36,7 @@ if (-not $isAdmin) {
 }
 
 # Set execution policy for this session
-Set-ExecutionPolicy -Scope Process -Force Unrestricted -ErrorAction SilentlyContinue
+Set-ExecutionPolicy -Scope Process -Force Bypass -ErrorAction SilentlyContinue
 
 function Show-Header {
     Clear-Host
@@ -235,7 +235,7 @@ while (-not $quit) {
             while (-not $subQuit) {
                 Show-PrivacyMenu
                 $subChoice = Read-Host "Enter your choice"
-                switch ($subChoice) {
+                switch ($subChoice.ToUpper()) {
                     "1" { Run-Script "$PSScriptRoot\Scripts\Privacy\Disable-Telemetry.ps1" "Disable Telemetry" }
                     "2" { Run-Script "$PSScriptRoot\Scripts\Privacy\Disable-WindowsSuggestions.ps1" "Disable Windows Suggestions" }
                     "B" { $subQuit = $true }
@@ -247,7 +247,7 @@ while (-not $quit) {
             while (-not $subQuit) {
                 Show-AIMenu
                 $subChoice = Read-Host "Enter your choice"
-                switch ($subChoice) {
+                switch ($subChoice.ToUpper()) {
                     "1" { Run-Script "$PSScriptRoot\Scripts\AI\Disable-Copilot.ps1" "Disable Copilot" }
                     "2" { Run-Script "$PSScriptRoot\Scripts\AI\Disable-WindowsRecall.ps1" "Disable Windows Recall" }
                     "B" { $subQuit = $true }
@@ -259,7 +259,7 @@ while (-not $quit) {
             while (-not $subQuit) {
                 Show-AppRemovalMenu
                 $subChoice = Read-Host "Enter your choice"
-                switch ($subChoice) {
+                switch ($subChoice.ToUpper()) {
                     "1" { Run-Script "$PSScriptRoot\Scripts\AppRemoval\Remove-BloatwareApps.ps1" "Remove Bloatware Apps" }
                     "B" { $subQuit = $true }
                 }
@@ -270,7 +270,7 @@ while (-not $quit) {
             while (-not $subQuit) {
                 Show-AppearanceMenu
                 $subChoice = Read-Host "Enter your choice"
-                switch ($subChoice) {
+                switch ($subChoice.ToUpper()) {
                     "1" { Run-Script "$PSScriptRoot\Scripts\Appearance\Enable-DarkMode.ps1" "Enable Dark Mode" }
                     "B" { $subQuit = $true }
                 }
@@ -281,7 +281,7 @@ while (-not $quit) {
             while (-not $subQuit) {
                 Show-SystemMenu
                 $subChoice = Read-Host "Enter your choice"
-                switch ($subChoice) {
+                switch ($subChoice.ToUpper()) {
                     "1" { Run-Script "$PSScriptRoot\Scripts\System\Disable-FastStartup.ps1" "Disable Fast Startup" }
                     "B" { $subQuit = $true }
                 }
@@ -292,7 +292,7 @@ while (-not $quit) {
             while (-not $subQuit) {
                 Show-UpdateMenu
                 $subChoice = Read-Host "Enter your choice"
-                switch ($subChoice) {
+                switch ($subChoice.ToUpper()) {
                     "1" { Run-Script "$PSScriptRoot\Scripts\WindowsUpdate\Prevent-AutoReboot.ps1" "Prevent Auto-Restart" }
                     "B" { $subQuit = $true }
                 }
@@ -303,7 +303,7 @@ while (-not $quit) {
             while (-not $subQuit) {
                 Show-TaskbarMenu
                 $subChoice = Read-Host "Enter your choice"
-                switch ($subChoice) {
+                switch ($subChoice.ToUpper()) {
                     "1" { Run-Script "$PSScriptRoot\Scripts\Taskbar\Align-Taskbar-Left.ps1" "Align Taskbar Left" }
                     "2" { Run-Script "$PSScriptRoot\Scripts\Taskbar\Disable-Widgets.ps1" "Disable Widgets" }
                     "B" { $subQuit = $true }
@@ -315,7 +315,7 @@ while (-not $quit) {
             while (-not $subQuit) {
                 Show-ExplorerMenu
                 $subChoice = Read-Host "Enter your choice"
-                switch ($subChoice) {
+                switch ($subChoice.ToUpper()) {
                     "1" { Run-Script "$PSScriptRoot\Scripts\FileExplorer\Show-FileExtensions.ps1" "Show File Extensions" }
                     "B" { $subQuit = $true }
                 }
@@ -326,7 +326,7 @@ while (-not $quit) {
             while (-not $subQuit) {
                 Show-StartMenuScripts
                 $subChoice = Read-Host "Enter your choice"
-                switch ($subChoice) {
+                switch ($subChoice.ToUpper()) {
                     "1" { Run-Script "$PSScriptRoot\Scripts\StartMenu\Disable-BingSearch.ps1" "Disable Bing Search" }
                     "B" { $subQuit = $true }
                 }
