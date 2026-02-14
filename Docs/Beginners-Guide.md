@@ -73,7 +73,7 @@ Let's walk through running your first script together.
 ### Step 3: Allow Scripts to Run
 In the PowerShell window that opened, type this command and press Enter:
 ```powershell
-Set-ExecutionPolicy -Scope Process -Force Unrestricted
+Set-ExecutionPolicy -Scope Process -Force Bypass
 ```
 
 **What this does:** Tells Windows it's okay to run these scripts (just for this session).

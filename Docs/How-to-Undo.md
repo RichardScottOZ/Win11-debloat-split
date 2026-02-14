@@ -135,7 +135,7 @@ If you get errors running scripts:
 
 2. **Set Execution Policy:**
    ```powershell
-   Set-ExecutionPolicy -Scope Process -Force Unrestricted
+   Set-ExecutionPolicy -Scope Process -Force Bypass
    ```
 
 3. **Verify File Paths:**

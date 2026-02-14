@@ -6,7 +6,7 @@ Copy and paste these commands into PowerShell (run as Administrator) to quickly 
 
 ### First Time Setup
 ```powershell
-Set-ExecutionPolicy -Scope Process -Force Unrestricted
+Set-ExecutionPolicy -Scope Process -Force Bypass
 cd C:\Path\To\Win11-debloat-split\Scripts
 ```
 *(Replace the path with where you extracted the files)*
